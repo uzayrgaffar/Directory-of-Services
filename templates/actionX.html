@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Action</title>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Directory of Services</h1>
+    </div>
+    
+    {% for line in A %}
+    <div class="copybtninline">
+        <p class="actiontitle" id="copyText"> {{ line['condition'] }} </p>
+        <button onclick="copyToClipboard()" class="copybtn">Copy</button>
+    </div>
+
+    <a class=" editbtn editcondition fa fa-pencil" href = "javascript:void(0)" onclick = "document.getElementById('conditionA').style.display='block';document.getElementById('fade').style.display='block'" style="font-size: 40px;"></a>
+        
+        <div id="conditionA" class="popupboxsmall">
+
+            <div class="centre">
+                <form action="/replace_value_X" method="post" class="loginform">
+                    <label class="form1stlabel">Old Value</label>
+                    {% for line in A %}
+                        <input type="text" name="old_value_to_replace" value="{{ line['condition'] }}" readonly class="form1stinput">
+                    {% endfor %}
+
+                    <label class="form2ndlabel">New Value</label>
+                    <input autofocus type="text" name="new_value_to_replace" required class="form2ndinput" placeholder="Enter the new value">
+                    
+                    <input type="submit" class="submitbtn" value="Save">
+                </form>
+            </div>
+
+            <a class="close" href = "javascript:void(0)" onclick = "document.getElementById('conditionA').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+        
+        </div>
+        <div id="fade" class="black_overlay"></div>
+    <p class="actiontext"> {{ line['action'] }} </p>
+    {% endfor %}
+    
+    
+    <div class="uploadsbox">
+        <p class="actionheader">Action</p>
+        
+        <a class=" editbtn editaction fa fa-pencil" href = "javascript:void(0)" onclick = "document.getElementById('actionA').style.display='block';document.getElementById('fade').style.display='block'" style="font-size: 20px;"></a>
+        
+        <div id="actionA" class="popupbox">
+
+            <div class="centrebigger">
+                <form action="/replace_value_X" method="post" class="loginform">
+                    <label class="form1stlabel">Old Value</label>
+                    {% for line in A %}
+                        <input type="hidden" name="old_value_to_replace" value="{{ line['action'] }}" readonly>
+                        <p class="actionold">{{ line['action'] }}</p>
+                    {% endfor %}
+
+                    <label class="form2ndlabel">New Value</label>
+                    <input autofocus type="text" name="new_value_to_replace" required class="form2ndinput" placeholder="Enter the new value">
+                    
+                    <input type="submit" class="submitbtn" value="Save">
+                </form>
+            </div>
+
+            <a class="close" href = "javascript:void(0)" onclick = "document.getElementById('actionA').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+        
+        </div>
+        <div id="fade" class="black_overlay"></div>
+    </div>
+    
+
+    <div class="resourcesbox">
+        <p class="resourcesheader">Resources</p>
+        <a class=" editbtn addresources" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">+</a>
+        <div id="light" class="popupbox">
+            <div class="centrebig">
+                
+                <form action="/addresources.html" method="post" enctype="multipart/form-data" class="loginform">
+                    <label for="Resource Name" class="form1stlabel">Name</label>
+                    <input autocomplete="off" autofocus name="name" placeholder="Enter Name" type="text" class="form1stinput" required>
+                
+                    <label for="Attachment/Link" class="form2ndlabel">Type</label>
+                    <label>
+                        <input type="radio" name="options" value="Link" onclick="showForm('link')"> Link
+                    </label>
+                    <label>
+                        <input type="radio" name="options" value="Attachment" onclick="showForm('attachment')"> Attachment
+                    </label>
+                
+                    <div id="link" style="display: none;">
+                        <!-- Form for option 1 -->
+                        <input type="text" name="link" id="linkInput" placeholder="Enter Full Link" class="forminputlink">
+                    </div>
+                
+                    <div id="attachment" style="display: none;">
+                        <!-- Form for option 2 -->
+                        <input type="file" name="file" class="upload" accept="image/">
+                    </div>
+                
+                    <button type="submit" class="submitbtn" style="margin-top: 10px">Add Resource</button>
+                </form>
+                
+
+            </div>
+            <a class="close" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+        </div>
+        <div id="fade" class="black_overlay"></div>
+
+        <table id="table">
+            <thead>
+                <th>Name</th>
+                <th>Attachment</th>
+                <th></th>
+            </thead>
+            <tbody>
+                {% for line in resources %}
+                <tr>
+                    <td>{{ line['name'] }}</td>
+                    <td><a href="{{ line['link'] }}" target="_blank">View link</a></td>
+                    <td>
+                        <form action="/remove_resource/{{ line['name'] }}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button type="submit" class="removebtn">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                {% for line in files %}
+                    <tr>
+                        <td>{{ line['name'] }}</td>
+                        <td><a href="{{ url_for('uploaded_file', filename=line['image']) }}" target="_blank">View Attachment</a></td>
+                        <td>
+                            <form action="/remove_resource/{{ line['name'] }}" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="removebtn">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+    
+            </tbody>
+        </table>
+        
+    </div>
+        
+        <a class="btn-back" href="AtoZ.html">
+            <img class="Home" src="{{ url_for('static', filename='images/home.webp') }}" alt="Home Button">
+        </a>
+        
+        <script>
+            function copyToClipboard() {
+                var copyText = document.getElementById("copyText");
+    
+                var range = document.createRange();
+                range.selectNode(copyText);
+                
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                
+                try {
+                    document.execCommand("copy");
+                    alert("Text copied to clipboard: " + copyText.innerText);
+                } catch (error) {
+                    console.error("Unable to copy text to clipboard", error);
+                }
+                
+                window.getSelection().removeAllRanges();
+            }
+
+            function showForm(formId) {
+            // Hide all forms
+            document.getElementById('link').style.display = 'none';
+            document.getElementById('attachment').style.display = 'none';
+
+            // Show the selected form
+            document.getElementById(formId).style.display = 'block';
+        }
+            </script>
+
+</body>
+</html>

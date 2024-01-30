@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Conditions</title>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Directory of Services</h1>
+    </div>
+    
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for conditions" title="Type in a name">
+
+    <ul id="myUL">
+        {% for line in V %}
+            <li><a href="{{ url_for('actionV', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+        {% endfor %}
+    </ul>
+    
+        <br>
+
+            {% for line in V %}
+                <a class="btn" href="{{ url_for('actionV', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a>
+
+                <form action="/remove_V/{{ line['condition'] }}" method="POST">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="removebtn">Remove</button>
+                </form>
+            {% endfor %}
+
+    <a class="btn-back" href="AtoZ.html">
+        <img class="Home" src="{{ url_for('static', filename='images/home.webp') }}" alt="Home Button">
+    </a>
+    
+    <script>
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName("li");
+            
+            var hasMatchingNames = false;
+            
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                    hasMatchingNames = true;
+                } else {
+                    li[i].style.display = "none";
+                }
+             }
+            
+             // Display or hide the entire list based on whether there are matching names
+            ul.style.display = hasMatchingNames ? "block" : "none";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Directory of Services</title>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Directory of Services</h1>
+    </div>
+    
+    <h1>Users</h1>
+    <table id="table">
+        <thead>
+            <th>Username</th>
+            <th>Admin?</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for line in userslist %}
+            <tr>
+                <td>{{ line['username'] }}</td>
+                <td>{{ line['role'] }}</td>
+                <td>
+                    <form action="/remove_user/{{ line['username'] }}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="removebtn">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,3 @@
+username,password,role
+admin@example.com,password,Y
+user@example.com,password,N

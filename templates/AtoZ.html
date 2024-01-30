@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Directory of Services</title>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Directory of Services</h1>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropbtn">Settings</button>
+        <div class="dropdown-content">
+          <a href="profile.html">Profile</a>
+        </div>
+      </div>
+    
+      <a href="/" class="logout">Logout</a>
+
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for conditions" title="Type in a name">
+
+      <ul id="myUL">
+          {% for line in A %}
+              <li><a href="{{ url_for('actionA', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in B %}
+              <li><a href="{{ url_for('actionB', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in C %}
+              <li><a href="{{ url_for('actionC', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in D %}
+              <li><a href="{{ url_for('actionD', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in E %}
+              <li><a href="{{ url_for('actionE', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in F %}
+              <li><a href="{{ url_for('actionF', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in G %}
+              <li><a href="{{ url_for('actionG', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in H %}
+              <li><a href="{{ url_for('actionH', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in I %}
+              <li><a href="{{ url_for('actionI', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in J %}
+              <li><a href="{{ url_for('actionJ', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in K %}
+              <li><a href="{{ url_for('actionK', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in L %}
+              <li><a href="{{ url_for('actionL', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in M %}
+              <li><a href="{{ url_for('actionM', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in N %}
+              <li><a href="{{ url_for('actionN', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in O %}
+              <li><a href="{{ url_for('actionO', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in P %}
+              <li><a href="{{ url_for('actionP', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in Q %}
+              <li><a href="{{ url_for('actionQ', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in R %}
+              <li><a href="{{ url_for('actionR', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in S %}
+              <li><a href="{{ url_for('actionS', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in T %}
+              <li><a href="{{ url_for('actionT', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in U %}
+              <li><a href="{{ url_for('actionU', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in V %}
+              <li><a href="{{ url_for('actionV', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in W %}
+              <li><a href="{{ url_for('actionW', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in X %}
+              <li><a href="{{ url_for('actionX', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in Y %}
+              <li><a href="{{ url_for('actionY', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+          {% for line in Z %}
+              <li><a href="{{ url_for('actionZ', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+          {% endfor %}
+      </ul>
+      
+          <br>
+
+    <div class="centrebuttons">
+
+        <a href="A.html" class="btn">A</a>
+        
+        <a href="B.html" class="btn">B</a>
+        
+        <a href="C.html" class="btn">C</a>
+        
+        <a href="D.html" class="btn">D</a>
+        
+        <a href="E.html" class="btn">E</a>
+        
+        <a href="F.html" class="btn">F</a>
+        
+        <a href="G.html" class="btn">G</a>
+        
+        <a href="H.html" class="btn">H</a>
+        
+        <a href="I.html" class="btn">I</a>
+        
+        <a href="J.html" class="btn">J</a>
+        
+        <a href="K.html" class="btn">K</a>
+        
+        <a href="L.html" class="btn">L</a>
+        
+        <a href="M.html" class="btn">M</a>
+        
+        <a href="N.html" class="btn">N</a>
+        
+        <a href="O.html" class="btn">O</a>
+        
+        <a href="P.html" class="btn">P</a>
+        
+        <a href="Q.html" class="btn">Q</a>
+        
+        <a href="R.html" class="btn">R</a>
+        
+        <a href="S.html" class="btn">S</a>
+        
+        <a href="T.html" class="btn">T</a>
+        
+        <a href="U.html" class="btn">U</a>
+        
+        <a href="V.html" class="btn">V</a>
+        
+        <a href="W.html" class="btn">W</a>
+        
+        <a href="X.html" class="btn">X</a>
+        
+        <a href="Y.html" class="btn">Y</a>
+        
+        <a href="Z.html" class="btn">Z</a>
+        
+    </div>
+
+    <script>
+        function myFunction() {
+            var input, filter, ul, li, a, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName("li");
+            
+            var hasMatchingNames = false;
+            
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                    hasMatchingNames = true;
+                } else {
+                    li[i].style.display = "none";
+                }
+             }
+            
+             // Display or hide the entire list based on whether there are matching names
+            ul.style.display = hasMatchingNames ? "block" : "none";
+        }
+        </script>
+
+</body>
+</html>

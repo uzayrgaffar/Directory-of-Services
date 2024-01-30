@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Directory of Services</title>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Directory of Services</h1>
+    </div>
+
+    <h1 class="userstitle">Add Users</h1>
+    <form action="/newuser.html" method="post">
+        <label for="newusername" class="condition">Username:</label>
+        <input autocomplete="off" autofocus name="username" placeholder="Enter Username" type="text" class="loginform-username" required>
+        <label for="newpassword" class="action">Password:</label>
+        <input autocomplete="off" autofocus name="password" placeholder="Enter Password" type="password" class="loginform-password" required>
+        <label for="role" class="role-label">Is this user an admin?</label>
+        <label for="yes" class="yes"><i>Yes</i></label>
+        <input name="admin" type="checkbox" value="Y" class="checkyes">
+        <button type="submit" class="submituser">Add User</button>
+    </form>
+
+</body>
+</html>

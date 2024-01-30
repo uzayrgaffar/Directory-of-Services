@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Directory of Services</title>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Directory of Services</h1>
+    </div>
+
+    <h1>Suggestions</h1>
+    <table id="table">
+        <thead>
+            <th>Type</th>
+            <th>Condition</th>
+            <th>Action</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for line in suggest %}
+            <tr>
+                <td>{{ line['addedit'] }}</td>
+                <td>{{ line['condition'] }}</td>
+                <td>{{ line['action'] }}</td>
+                <td>
+                    <form action="/remove_suggest/{{ line['condition'] }}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="removebtn">Dismiss</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+
+            {% for i in suggestadd %}
+            <tr>
+                <td>{{ i['addedit'] }}</td>
+                <td>{{ i['condition'] }}</td>
+                <td></td>
+                <td>
+                    <form action="/remove_suggestadd/{{ i['condition'] }}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="removebtn">Dismiss</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
