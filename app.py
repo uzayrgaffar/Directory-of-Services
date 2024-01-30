@@ -2786,7 +2786,6 @@ def deregister_resource(name):
 @app.route("/remove_A/<A>", methods=["POST", "DELETE"])
 def deregister_A(A):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_A'], A)
         with open('A.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != A]
@@ -2801,7 +2800,6 @@ def deregister_A(A):
 @app.route("/remove_B/<B>", methods=["POST", "DELETE"])
 def deregister_B(B):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_B'], B)
         with open('B.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != B]
@@ -2816,7 +2814,6 @@ def deregister_B(B):
 @app.route("/remove_C/<C>", methods=["POST", "DELETE"])
 def deregister_C(C):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_C'], C)
         with open('C.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != C]
@@ -2831,7 +2828,6 @@ def deregister_C(C):
 @app.route("/remove_D/<D>", methods=["POST", "DELETE"])
 def deregister_D(D):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_D'], D)
         with open('D.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != D]
@@ -2846,7 +2842,6 @@ def deregister_D(D):
 @app.route("/remove_E/<E>", methods=["POST", "DELETE"])
 def deregister_E(E):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_E'], E)
         with open('E.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != E]
@@ -2862,7 +2857,6 @@ def deregister_E(E):
 @app.route("/remove_F/<F>", methods=["POST", "DELETE"])
 def deregister_F(F):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_F'], F)
         with open('F.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != F]
@@ -2877,7 +2871,6 @@ def deregister_F(F):
 @app.route("/remove_G/<G>", methods=["POST", "DELETE"])
 def deregister_G(G):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_G'], G)
         with open('G.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != G]
@@ -2892,7 +2885,6 @@ def deregister_G(G):
 @app.route("/remove_H/<H>", methods=["POST", "DELETE"])
 def deregister_H(H):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_H'], H)
         with open('H.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != H]
@@ -2907,7 +2899,6 @@ def deregister_H(H):
 @app.route("/remove_I/<I>", methods=["POST", "DELETE"])
 def deregister_I(I):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_I'], I)
         with open('I.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != I]
@@ -2922,7 +2913,6 @@ def deregister_I(I):
 @app.route("/remove_J/<J>", methods=["POST", "DELETE"])
 def deregister_J(J):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_J'], J)
         with open('J.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != J]
@@ -2937,7 +2927,6 @@ def deregister_J(J):
 @app.route("/remove_K/<K>", methods=["POST", "DELETE"])
 def deregister_K(K):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_K'], K)
         with open('K.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != K]
@@ -2952,7 +2941,6 @@ def deregister_K(K):
 @app.route("/remove_L/<L>", methods=["POST", "DELETE"])
 def deregister_L(L):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_L'], L)
         with open('L.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != L]
@@ -2967,7 +2955,6 @@ def deregister_L(L):
 @app.route("/remove_M/<M>", methods=["POST", "DELETE"])
 def deregister_M(M):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_M'], M)
         with open('M.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != M]
@@ -2982,7 +2969,6 @@ def deregister_M(M):
 @app.route("/remove_N/<N>", methods=["POST", "DELETE"])
 def deregister_N(N):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_N'], N)
         with open('N.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != N]
@@ -2997,7 +2983,6 @@ def deregister_N(N):
 @app.route("/remove_O/<O>", methods=["POST", "DELETE"])
 def deregister_O(O):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_O'], O)
         with open('O.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != O]
@@ -3012,7 +2997,6 @@ def deregister_O(O):
 @app.route("/remove_P/<P>", methods=["POST", "DELETE"])
 def deregister_P(P):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_P'], P)
         with open('P.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != P]
@@ -3027,7 +3011,6 @@ def deregister_P(P):
 @app.route("/remove_Q/<Q>", methods=["POST", "DELETE"])
 def deregister_Q(Q):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_Q'], Q)
         with open('Q.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != Q]
@@ -3042,7 +3025,6 @@ def deregister_Q(Q):
 @app.route("/remove_R/<R>", methods=["POST", "DELETE"])
 def deregister_R(R):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_R'], R)
         with open('R.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != R]
@@ -3057,7 +3039,6 @@ def deregister_R(R):
 @app.route("/remove_S/<S>", methods=["POST", "DELETE"])
 def deregister_S(S):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_S'], S)
         with open('S.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != S]
@@ -3072,7 +3053,6 @@ def deregister_S(S):
 @app.route("/remove_T/<T>", methods=["POST", "DELETE"])
 def deregister_T(T):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_T'], T)
         with open('T.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != T]
@@ -3087,7 +3067,6 @@ def deregister_T(T):
 @app.route("/remove_U/<U>", methods=["POST", "DELETE"])
 def deregister_U(U):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_U'], U)
         with open('U.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != U]
@@ -3102,7 +3081,6 @@ def deregister_U(U):
 @app.route("/remove_V/<V>", methods=["POST", "DELETE"])
 def deregister_V(V):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_V'], V)
         with open('V.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != V]
@@ -3117,7 +3095,6 @@ def deregister_V(V):
 @app.route("/remove_W/<W>", methods=["POST", "DELETE"])
 def deregister_W(W):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_W'], W)
         with open('W.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != W]
@@ -3132,7 +3109,6 @@ def deregister_W(W):
 @app.route("/remove_X/<X>", methods=["POST", "DELETE"])
 def deregister_X(X):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_X'], X)
         with open('X.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != X]
@@ -3147,7 +3123,6 @@ def deregister_X(X):
 @app.route("/remove_Y/<Y>", methods=["POST", "DELETE"])
 def deregister_Y(Y):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_Y'], Y)
         with open('Y.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != Y]
@@ -3162,7 +3137,6 @@ def deregister_Y(Y):
 @app.route("/remove_Z/<Z>", methods=["POST", "DELETE"])
 def deregister_Z(Z):
     if request.method in ["POST", "DELETE"]:
-        success = remove_file(app.config['UPLOAD_FOLDER_Z'], Z)
         with open('Z.csv', 'r') as file:
             csv_reader = csv.DictReader(file)
             lines = [line for line in csv_reader if line['condition'] != Z]
