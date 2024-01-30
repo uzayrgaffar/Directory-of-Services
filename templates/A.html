@@ -25,7 +25,7 @@
             {% for line in A %}
                 <a class="btn" href="{{ url_for('actionA', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a>
 
-                <form action="/remove_A/{{ line['condition'] }}" method="POST" style="display: inline;">
+                <form action="/remove_A/{{ line['condition'] }}" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="removebtn">Remove</button>
                 </form>

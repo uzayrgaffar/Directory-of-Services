@@ -818,8 +818,8 @@ a.btn:hover {
 .image {
     top: 2%;
     left: 2%;
-    height: 96%;
-    width: 96%;
+    max-height: 96%;
+    max-width: 96%;
 }
 
 .close {
