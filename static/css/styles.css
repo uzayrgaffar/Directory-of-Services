@@ -801,6 +801,27 @@ a.btn:hover {
     overflow: auto;
 }
 
+.popupboxbig {
+    display: none;
+    position: fixed;
+    top: 2.5%;
+    left: 2.5%;
+    width: 95%;
+    height: 95%;
+    padding: 16px;
+    border: 8px solid #005eb8;
+    background-color: #f0f4f5;
+    z-index:1002;
+    overflow: auto;
+}
+
+.image {
+    top: 2%;
+    left: 2%;
+    height: 96%;
+    width: 96%;
+}
+
 .close {
     position: absolute;
     background-color: #005eb8;
