@@ -384,7 +384,9 @@ def suggestionAdd():
     suggested_condition = request.form.get("suggested_condition")
     with open('suggestadd.csv', 'a') as file:
         writer = csv.DictWriter(file, fieldnames=suggestadd)
-        writer.writerow({'addedit': 'Add', 'condition': suggested_condition.capitalize()})
+        firstletter = suggested_condition[0].upper()
+        suggested_condition = firstletter + suggested_condition[1:]
+        writer.writerow({'addedit': 'Add', 'condition': suggested_condition})
     return redirect('AtoZ-standard.html')
 
 @app.route("/suggestedit.html", methods=["POST"])
@@ -393,7 +395,14 @@ def suggestionEdit():
     suggested_action = request.form.get("suggested_action")
     with open('suggest.csv', 'a') as file:
         writer = csv.DictWriter(file, fieldnames=suggest1)
-        writer.writerow({'addedit': 'Edit', 'oldaction': suggested_condition.capitalize(), 'newaction': suggested_action.capitalize()})
+        
+        firstletter = suggested_condition[0].upper()
+        suggested_condition = firstletter + suggested_condition[1:]
+
+        firstletter2 = suggested_action[0].upper()
+        suggested_action = firstletter2 + suggested_action[1:]
+
+        writer.writerow({'addedit': 'Edit', 'oldaction': suggested_condition, 'newaction': suggested_action})
     return redirect('AtoZ-standard.html')
 
 
@@ -682,14 +691,18 @@ def addresources():
     if link:
         with open('resources.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=resources)
-            writer.writerow({'condition': condition, 'name': name.capitalize(), 'link': link})
+            firstletter = name[0].upper()
+            name = firstletter + name[1:]
+            writer.writerow({'condition': condition, 'name': name, 'link': link})
 
     if attachment:
         filename = os.path.join(app.config['resource'], attachment.filename)
         attachment.save(filename)
         with open('uploaded_files.csv', 'a', newline='') as csv_file:
             csv_writer = csv.DictWriter(csv_file, fieldnames=imagefields)
-            csv_writer.writerow({'condition': condition, 'name': name.capitalize(), 'image': attachment.filename})
+            firstlettername = name[0].upper()
+            name = firstlettername + name[1:]
+            csv_writer.writerow({'condition': condition, 'name': name, 'image': attachment.filename})
 
     return render_template('AtoZ.html', filename=attachment.filename, name=name)
 
@@ -702,132 +715,182 @@ def register():
     if condition[0].lower() == "a":
         with open('A.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstlettera = condition[0].upper()
+            condition = firstlettera + condition[1:] 
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "b":
         with open('B.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletterb = condition[0].upper()
+            condition = firstletterb + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "c":
         with open('C.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletterc = condition[0].upper()
+            condition = firstletterc + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "d":
         with open('D.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletterd = condition[0].upper()
+            condition = firstletterd + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "e":
         with open('E.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstlettere = condition[0].upper()
+            condition = firstlettere + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "f":
         with open('F.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletterf = condition[0].upper()
+            condition = firstletterf + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
     
     if condition[0].lower() == "g":
         with open('G.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletterg = condition[0].upper()
+            condition = firstletterg + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "h":
         with open('H.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletterh = condition[0].upper()
+            condition = firstletterh + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "i":
         with open('I.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletteri = condition[0].upper()
+            condition = firstletteri + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "j":
         with open('J.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "k":
         with open('K.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "l":
         with open('L.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "m":
         with open('M.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "n":
         with open('N.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "o":
         with open('O.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "p":
         with open('P.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "q":
         with open('Q.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "r":
         with open('R.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "s":
         with open('S.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "t":
         with open('T.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "u":
         with open('U.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "v":
         with open('V.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "w":
         with open('W.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "x":
         with open('X.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
     
     if condition[0].lower() == "y":
         with open('Y.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
 
     if condition[0].lower() == "z":
         with open('Z.csv', 'a') as file:
             writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writerow({'condition': condition.capitalize(), 'action': action})
+            firstletter = condition[0].upper()
+            condition = firstletter + condition[1:]
+            writer.writerow({'condition': condition, 'action': action})
         
     return redirect("index.html")
 

@@ -102,7 +102,7 @@
                 
                     <div id="attachment" style="display: none;">
                         <!-- Form for option 2 -->
-                        <input type="file" name="file" class="upload" accept="image/">
+                        <input type="file" name="file" class="upload" accept=".pdf .png .tiff .jpg .jpeg .webp">
                     </div>    
                 
                     <button type="submit" class="submitbtn" style="margin-top: 10px">Add Resource</button>
@@ -144,6 +144,7 @@
 
                         <div id="picture" class="popupboxbig">
                             <img class="image" src="{{ url_for('uploaded_file', filename=line['image']) }}" alt="">
+                            <iframe src="{{ url_for('uploaded_file', filename=line['image']) }}" frameborder="0" width="90%" height="90%" allowfullscreen></iframe>
                             <a class="close" href = "javascript:void(0)" onclick = "document.getElementById('picture').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
                         </div>
 
