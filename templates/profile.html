@@ -13,14 +13,38 @@
         <h1>Directory of Services</h1>
     </div>
 
+    <a href="/" class="logout">Logout</a>
+
     <div class="dropdown">
         <button class="dropbtn">Settings</button>
         <div class="dropdown-content">
           <a href="profile.html">Profile</a>
+          {% if role == 'Y' %}
+          <a href="suggestions.html">Suggestions</a>
+          <a href="users.html">Manage Users</a>
+          {% endif %}
         </div>
       </div>
+
+      <div class="centrebig"> 
+  
+        <form action="" class="loginform">
+          
+            <label class="form1stlabel">Your Email Address</label>
+            <input class="form1stinput" value={{username}} readonly>
+          
+            <label class="form2ndlabel">Your Password</label>
+            <input class="form2ndinput" value={{password}} readonly>
+  
+            <label class="form3rdlabel">Your Site</label>
+            <input class="form3rdinput" value={{site}} readonly>
     
-      <a href="/" class="logout">Logout</a>
+        </form>
+      
+      </div>
+
+
+  
     
 </body>
 </html>

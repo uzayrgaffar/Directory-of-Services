@@ -13,95 +13,24 @@
         <h1>Directory of Services</h1>
     </div>
 
+    <a href="/" class="logout">Logout</a>
+
     <div class="dropdown">
         <button class="dropbtn">Settings</button>
         <div class="dropdown-content">
           <a href="profile.html">Profile</a>
+          {% if role == 'Y' %}
+          <a href="suggestions.html">Suggestions</a>
+          <a href="users.html">Manage Users</a>
+          {% endif %}
         </div>
       </div>
-    
-      <a href="/" class="logout">Logout</a>
 
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for conditions" title="Type in a name">
 
       <ul id="myUL">
           {% for line in A %}
-              <li><a href="{{ url_for('actionA', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in B %}
-              <li><a href="{{ url_for('actionB', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in C %}
-              <li><a href="{{ url_for('actionC', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in D %}
-              <li><a href="{{ url_for('actionD', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in E %}
-              <li><a href="{{ url_for('actionE', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in F %}
-              <li><a href="{{ url_for('actionF', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in G %}
-              <li><a href="{{ url_for('actionG', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in H %}
-              <li><a href="{{ url_for('actionH', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in I %}
-              <li><a href="{{ url_for('actionI', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in J %}
-              <li><a href="{{ url_for('actionJ', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in K %}
-              <li><a href="{{ url_for('actionK', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in L %}
-              <li><a href="{{ url_for('actionL', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in M %}
-              <li><a href="{{ url_for('actionM', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in N %}
-              <li><a href="{{ url_for('actionN', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in O %}
-              <li><a href="{{ url_for('actionO', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in P %}
-              <li><a href="{{ url_for('actionP', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in Q %}
-              <li><a href="{{ url_for('actionQ', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in R %}
-              <li><a href="{{ url_for('actionR', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in S %}
-              <li><a href="{{ url_for('actionS', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in T %}
-              <li><a href="{{ url_for('actionT', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in U %}
-              <li><a href="{{ url_for('actionU', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in V %}
-              <li><a href="{{ url_for('actionV', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in W %}
-              <li><a href="{{ url_for('actionW', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in X %}
-              <li><a href="{{ url_for('actionX', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in Y %}
-              <li><a href="{{ url_for('actionY', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
-          {% endfor %}
-          {% for line in Z %}
-              <li><a href="{{ url_for('actionZ', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+              <li><a href="{{ url_for('action', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
           {% endfor %}
       </ul>
       

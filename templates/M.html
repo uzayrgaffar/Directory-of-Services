@@ -11,29 +11,75 @@
     <div class="header">
         <h1>Directory of Services</h1>
     </div>
+
+    <a href="/" class="logout">Logout</a>
+
+    <div class="dropdown">
+        <button class="dropbtn">Settings</button>
+        <div class="dropdown-content">
+          <a href="profile.html">Profile</a>
+          {% if role == 'Y' %}
+          <a href="suggestions.html">Suggestions</a>
+          <a href="users.html">Manage Users</a>
+          {% endif %}
+        </div>
+      </div>
     
     <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for conditions" title="Type in a name">
 
     <ul id="myUL">
         {% for line in M %}
-            <li><a href="{{ url_for('actionM', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
+            <li><a href="{{ url_for('action', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a></li>
         {% endfor %}
     </ul>
     
         <br>
 
+            {% if role == 'Y' %}
             {% for line in M %}
-                <a class="btn" href="{{ url_for('actionM', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a>
-
-                <form action="/remove_M/{{ line['condition'] }}" method="POST">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="removebtn">Remove</button>
-                </form>
+            <a class="btn" href="{{ url_for('action', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a>
+            
+            <form action="/remove/{{ line['condition'] }}" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="removebtn">Remove</button>
+            </form>
             {% endfor %}
+            {% endif %}
 
+            {% if role == 'N' %}
+            <div class="centrebuttons">
+                {% for line in M %}
+                <a class="btn" href="{{ url_for('action', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
     <a class="btn-back" href="AtoZ.html">
         <img class="Home" src="{{ url_for('static', filename='images/home.webp') }}" alt="Home Button">
     </a>
+
+    {% if role == 'N' %}
+    <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="missingconditionbtn">Missing Condition?</a>
+    <div id="light" class="popupboxsmall">
+        
+        <div class="centre">
+            
+            <form action="/suggest.html" method="post" class="loginform">
+                <input type="hidden" name="addedit" value="Add">
+                
+                <label for="condition" class="form1stlabel">Condition</label>
+                <input type="text" name="suggested_condition" placeholder="Suggested Condition" autocomplete="off" autofocus required class="form1stinput">
+                
+                <button type="submit" class="submitbtn">Submit</button>
+                
+            </form>
+            
+        </div>
+        
+        <a class="close" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+    </div>
+    <div id="fade" class="black_overlay"></div>
+    {% endif %}
     
     <script>
         function myFunction() {

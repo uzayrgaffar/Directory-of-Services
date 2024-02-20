@@ -1,3 +1,3 @@
-addedit,condition,action
-Edit,Book a 20-minute appointment with the nurse. Please ask the patient to bring any inhalers they have been prescribed.,"Check QOF indicators, if annual review has been conducted. Book a 20-minute nurse appointment. Patient to bring in their prescribed inhalers for checking technique."
-Edit,Book a 20-minute appointment with the nurse. Please ask the patient to bring any inhalers they have been prescribed.,Book a 20-minute appointment with the nurse. Please ask the patient to bring any inhalers they have been prescribed. Check if QOF indicator outstanding for annual review to be conducted.
+site,addedit,old,new
+new,Add,Hi,
+new,Edit,test,Edit

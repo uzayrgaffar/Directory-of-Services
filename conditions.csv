@@ -1,0 +1,8 @@
+site,condition,action
+example,Asthma,Book a 20-minute appointment with the nurse. Please ask the patient to bring any inhalers they have been prescribed.
+example,Blood Test,"If routine bloods, book a 10-minute appointment with HCA. If bloods are for DOAC monitoring, book a 20-minute appointment. If the patient is eligible for an NHS Health Check, book an opportunistic 20-minute appointment."
+example,Sore Throat,"In the first instance, refer to the pharmacy using the link in the resources. If already evaluated by the pharmacist, book a 10-minute appointment with the GP."
+example,UTI,"If a first instance, refer to the community pharmacy using the link in the resources. The pharmacy will be able to prescribe antibiotics if required in women aged 16-64. If recurrent, or previously had advice from the pharmacy, book a 10-minute appointment with the duty GP. Pharmacy pathway details can be viewed in resources"
+new,Asthma,test
+
+new,Blood test,test

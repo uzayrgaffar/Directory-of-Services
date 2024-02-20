@@ -66,21 +66,21 @@ a.btn-back:hover {
 
 
 
-
-
-
-.loginform-password {
-    position: absolute;
-    left: 37.5%;
-    top: 49%;
-    width: 20%;
-    padding: 0.5% 1.6%;
-    font-size: 16px;
-    border-radius: 5px;
-    display: inline-block;
-    text-decoration: none;
+.navbarpos {
+    margin-top: -18px;
 }
 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
 
 li a {
     display: block;
@@ -92,98 +92,6 @@ li a {
 
 li a:hover {
     background-color: #111;
-}
-
-
-.conditiontitle {
-    position: absolute;
-    left: 31%;
-    top: 22%;
-    font-size: 80px;
-    font-weight: bold;
-}
-
-.userstitle {
-    position: absolute;
-    left: 38%;
-    top: 22%;
-    font-size: 80px;
-    font-weight: bold;
-}
-
-.condition {
-    position: absolute;
-    left: 38%;
-    top: 39%;
-}
-
-.action {
-    position: absolute;
-    left: 38%;
-    top: 46.8%;
-}
-
-.role-label {
-    position: absolute;
-    left: 38%;
-    top: 55.5%;
-}
-
-.role {
-    position: absolute;
-    left: 37.5%;
-    top: 56.8%;
-    width: 20%;
-    padding: 0.5% 1.6%;
-    font-size: 16px;
-    border-radius: 5px;
-    display: inline-block;
-    text-decoration: none;
-}
-
-.submituser {
-    position: absolute;
-    background: #005eb8;
-    color: #fff;
-    left: 34%;
-    top: 64%;
-    width: 30%;
-    padding: 0.8% 1.6%;
-    font-size: 16px;
-    border-radius: 5px;
-    text-align: center;
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-    border-radius: 100px;
-}
-
-.submituser:hover {
-    background: #002f5c;
-    transition-duration: 0.1s;
-}
-
-
-#table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-#table td, #table th {
-    border: none;
-    padding: 8px;
-}
-
-#table tr:nth-child(even){background-color: #f2f2f2;}
-
-#table tr:hover {background-color: #ddd;}
-
-#table th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #005eb8;
-    color: white;
 }
 
 .removebtn {
@@ -224,19 +132,6 @@ li a:hover {
     color: white;
   }
 
-  .checkyes {
-    position: absolute;
-    left: 48%;
-    top: 55.47%;
-  }
-
-.yes {
-    position: absolute;
-    left: 48%;
-    top: 54%;
-    font-size: 12px;
-}
-
 .actiontitle {
     font-size: 70px;
     width: 80%;
@@ -248,73 +143,7 @@ li a:hover {
     border-radius: 10px;
 }
 
-.actiontitleuser {
-    font-size: 70px;
-    width: 80%;
-    text-align: center;
-    margin-top: 11px;
-    margin-bottom: 0px;
-    background-color: white;
-    margin-left: 10%;
-    border-radius: 10px;
-}
-
-
-.removecondition {
-    position: fixed;
-    background: #005eb8;
-    color: #fff;
-    width: 5%;
-    padding: 0.4% 1.6%;
-    right: 91%;
-    top: 93%;
-    font-size: 14px;
-    border-radius: 5px;
-    text-align: center;
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-}
-
-.removecondition:hover {
-    background: #002f5c;
-    transition-duration: 0.1s;
-}
-
-.removeconditionbtn {
-    background: crimson;
-    color: #fff;
-    width: 15%;
-    padding: 1.3% 1.6%;
-    margin: 1.52% 2.7%;
-    font-size: 16px;
-    border-radius: 5px;
-    text-align: center;
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-    border: none;
-}
-
-.removeconditionbtn:hover {
-    background: darkred;
-    transition-duration: 0.1s;
-}
-
-.displayinline {
-    display: inline;
-    width: 100%;
-}
-
 /* ---------- INDEX.HTML (ADMIN-ONLY) ---------- */
-
-.enterconditions-title {
-    position: absolute;
-    left: 31%;
-    top: 22%;
-    font-size: 80px;
-    font-weight: bold;
-}
 
 input[type=file]::file-selector-button {
     background-color: #005eb8;
@@ -390,6 +219,21 @@ input[type=file]::file-selector-button:hover {
     border: 1px solid;
 }
 
+.form3rdlabel {
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    padding-bottom: 5px;
+}
+
+.form3rdinput {
+    min-width: 70%;
+    margin-bottom: 20px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid;
+}
+
 .forminputlink {
     min-width: 70%;
     margin-top: 10px;
@@ -417,19 +261,6 @@ input[type=file]::file-selector-button:hover {
 .submitbtn:hover {
     background: #002f5c;
     transition-duration: 0.1s;
-}
-
-.forgotpassword {
-    position: absolute;
-    font-weight: bold;
-    text-align: center;
-    bottom: 10%;
-    font-size: 12px;
-    text-decoration: none;
-}
-
-.forgotpassword:hover {
-    text-decoration: underline;
 }
 
 .wrongpassword {
@@ -594,7 +425,7 @@ a.btn:hover {
 .copybtn {
     max-height: 25px;
     min-width: 80px;
-    margin-top: 40px;
+    margin-top: 57px;
     margin-left: 10px;
     background-color: #005eb8;
     color: #fff;
@@ -840,3 +671,18 @@ a.btn:hover {
 }
 
 /* -------------------------------------------------- */
+
+
+.addcondition {
+    position: absolute;
+    top: 120px;
+    left: 25px;
+    color: crimson;
+    font-size: 40px;
+    text-decoration: none;
+}
+
+.addcondition:hover {
+    color: darkred;
+    transition-duration: 0.1s;
+}
