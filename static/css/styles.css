@@ -88,6 +88,7 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    width: 100%;
 }
 
 li a:hover {
@@ -379,13 +380,17 @@ a.btn:hover {
 
 #myUL {
     position: absolute;
-    left: 15.12vw;
+    left: 15.3vw;
     list-style-type: none;
     padding: 0;
     display: none;
     margin: 0px 0px 0px 0px;
     width: 70vw;
 
+}
+
+#myUL li {
+    width: 100%;
 }
 
 #myUL li a {
@@ -396,7 +401,7 @@ a.btn:hover {
     text-decoration: none;
     font-size: 18px;
     color: black;
-    display: block
+    display: block;
 }
 
 #myUL li a:hover:not(.header) {

@@ -80,6 +80,26 @@
     </div>
     <div id="fade" class="black_overlay"></div>
     {% endif %}
+
+    {% if role == 'Y' %}
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="addcondition">+</a>
+        <div id="light" class="popupboxsmall">
+
+            <div class="centre">
+
+                <form action="/register.html" method="post" class="loginform">
+                    <label for="condition" class="form1stlabel">Condition</label>
+                    <input autocomplete="off" autofocus name="condition" placeholder="Enter Condition" type="text" class="form1stinput" required>
+                    <label for="action" class="form2ndlabel">Action to be taken:</label>
+                    <input autocomplete="off" autofocus name="action" placeholder="Enter Action" type="text" class="form2ndinput">        
+                    <button type="submit" class="submitbtn">Add Condition</button>
+                </form>
+            </div>
+        
+            <a class="close" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+        </div>
+        <div id="fade" class="black_overlay"></div>
+    {% endif %}
     
     <script>
         function myFunction() {
