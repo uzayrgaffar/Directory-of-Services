@@ -91,7 +91,8 @@ def AtoZ():
 
 @app.route("/addusers.html")
 def addusers():
-    return render_template("addusers.html")
+    role = session.get('role')
+    return render_template("addusers.html", role=role)
 
 @app.route("/profile.html")
 def profile():
@@ -195,6 +196,7 @@ def register():
 
 @app.route("/users.html")
 def users_list():
+    role = session.get('role')
     site = session.get("site")
     user_list = []
     with open('users.csv', 'r') as csv_file:
@@ -202,10 +204,11 @@ def users_list():
         for line in csv_reader:
             user_list.append(line)
         user_list = [line for line in user_list if line['site'] == site]
-    return render_template("users.html", userslist=user_list)
+    return render_template("users.html", userslist=user_list, role=role)
 
 @app.route("/suggestions.html")
 def suggestions():
+    role = session.get('role')
     site = session.get('site')
     suggestions = []
     with open('suggest.csv', 'r') as csv_file:
@@ -213,7 +216,7 @@ def suggestions():
         for line in csv_reader:
             suggestions.append(line)
     suggestions = [line for line in suggestions if line['site'] == site]
-    return render_template("suggestions.html", suggest=suggestions)
+    return render_template("suggestions.html", suggest=suggestions, role=role)
 
 @app.route("/A.html")
 def A():

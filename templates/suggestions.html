@@ -8,25 +8,26 @@
 </head>
 <body>
 
+    <a class="btn-back" href="AtoZ.html">
+        <img class="Home" src="{{ url_for('static', filename='images/home.webp') }}" alt="Home Button">
+    </a>
+    
     <div class="header">
         <h1>Directory of Services</h1>
     </div>
-
+    
     <a href="/" class="logout">Logout</a>
 
     <div class="dropdown">
         <button class="dropbtn">Settings</button>
         <div class="dropdown-content">
-          <a href="profile.html">Profile</a>
-          <a href="suggestions.html">Suggestions</a>
-          <a href="users.html">Manage Users</a>
+            <a href="profile.html">Profile</a>
+            <a href="suggestions.html">Suggestions</a>
+            <a href="users.html">Manage Users</a>
         </div>
-      </div>
-
-    <a class="btn-back" href="AtoZ.html">
-        <img class="Home" src="{{ url_for('static', filename='images/home.webp') }}" alt="Home Button">
-    </a>
-
+    </div>
+    
+    
     <h1>Suggestions</h1>
     <table id="table">
         <thead>
@@ -49,9 +50,9 @@
                 </td>
             </tr>
             {% endfor %}
-
+            
         </tbody>
     </table>
-
+    
 </body>
 </html>

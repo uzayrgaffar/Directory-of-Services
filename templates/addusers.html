@@ -8,6 +8,10 @@
 </head>
 <body>
 
+  <a class="btn-back" href="AtoZ.html">
+    <img class="Home" src="{{ url_for('static', filename='images/home.webp') }}" alt="Home Button">
+  </a>
+
     <div class="header">
         <h1>Directory of Services</h1>
     </div>
@@ -18,37 +22,32 @@
         <button class="dropbtn">Settings</button>
         <div class="dropdown-content">
           <a href="profile.html">Profile</a>
-          {% if role == 'Y' %}
           <a href="suggestions.html">Suggestions</a>
           <a href="users.html">Manage Users</a>
-          {% endif %}
         </div>
       </div>
-
-    <a class="btn-back" href="AtoZ.html">
-      <img class="Home" src="{{ url_for('static', filename='images/home.webp') }}" alt="Home Button">
-    </a>
-
+      
+      
       <ul class="navbarpos">
         <li><a href="users.html">View Users</a></li>
         <li><a class="active" href="addusers.html">Add Users</a></li>
       </ul>
-
-        <div class="centre">
-          <form action="/newuser.html" method="post" class="loginform">
-              <label for="newusername" class="form1stlabel">Username</label>
-              <input autocomplete="off" autofocus name="username" placeholder="Enter Username" type="text" class="form1stinput" required>
-              
-              <label for="newpassword" class="form2ndlabel">Password</label>
-              <input autocomplete="off" autofocus name="password" placeholder="Enter Password" type="password" class="form2ndinput" required>
-              
-              <label for="role" class="form3rdlabel">Is this user an admin?</label>
-              <label for="yes" class="yes"><i>Yes</i></label>
-              <input name="admin" type="checkbox" value="Y" class="checkyes">
-
+      
+      <div class="centre">
+        <form action="/newuser.html" method="post" class="loginform">
+          <label for="newusername" class="form1stlabel">Username</label>
+          <input autocomplete="off" autofocus name="username" placeholder="Enter Username" type="text" class="form1stinput" required>
+          
+          <label for="newpassword" class="form2ndlabel">Password</label>
+          <input autocomplete="off" autofocus name="password" placeholder="Enter Password" type="password" class="form2ndinput" required>
+          
+          <label for="role" class="form3rdlabel">Is this user an admin?</label>
+          <label for="yes" class="yes"><i>Yes</i></label>
+          <input name="admin" type="checkbox" value="Y" class="checkyes">
+          
               <button type="submit" class="submitbtn">Add User</button>
             </form>
         </div>
-
+       
 </body>
 </html>

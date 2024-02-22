@@ -18,21 +18,19 @@
         <button class="dropbtn">Settings</button>
         <div class="dropdown-content">
           <a href="profile.html">Profile</a>
-          {% if role == 'Y' %}
           <a href="suggestions.html">Suggestions</a>
           <a href="users.html">Manage Users</a>
-          {% endif %}
         </div>
-      </div>
-
+    </div>
+    
     <a class="btn-back" href="AtoZ.html">
         <img class="Home" src="{{ url_for('static', filename='images/home.webp') }}" alt="Home Button">
     </a>
-
-      <ul class="navbarpos">
+    
+    <ul class="navbarpos">
         <li><a class="active" href="users.html">View Users</a></li>
         <li><a href="addusers.html">Add Users</a></li>
-      </ul>
+    </ul>
     
     <h1>Users</h1>
     <table id="table">
