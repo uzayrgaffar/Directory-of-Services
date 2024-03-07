@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Action</title>
@@ -15,9 +20,9 @@
 
     <a href="/" class="logout">Logout</a>
 
-    <div class="dropdown">
-        <button class="dropbtn">Settings</button>
-        <div class="dropdown-content">
+    <div class="dropdown-for-settings-button">
+        <button class="dropbtn-for-settings-button">Settings</button>
+        <div class="dropdown-content-for-settings-button">
           <a href="profile.html">Profile</a>
           {% if role == 'Y' %}
           <a href="suggestions.html">Suggestions</a>
@@ -31,39 +36,41 @@
         <p class="actiontitle" id="copyText"> {{ line['condition'] }} </p>
         <button onclick="copyToClipboard()" class="copybtn">Copy</button>
     </div>
+    {% endfor %}
 
-    {% if role == 'Y' %}
-    <a class=" editbtn editcondition fa fa-pencil" href = "javascript:void(0)" onclick = "document.getElementById('conditionA').style.display='block';document.getElementById('fade').style.display='block'" style="font-size: 40px;"></a>
-    
-    <div id="conditionA" class="popupboxsmall">
+    <div class="uploadsbox">
         
-        <div class="centre">
-            <form action="/replace_value" method="post" class="loginform">
-                <label class="form1stlabel">Old Value</label>
-                {% for line in A %}
-                <input type="text" name="old_value_to_replace" value="{{ line['condition'] }}" readonly class="form1stinput">
-                {% endfor %}
-                
-                <label class="form2ndlabel">New Value</label>
-                <input autofocus type="text" name="new_value_to_replace" required class="form2ndinput" placeholder="Enter the new value">
-                
-                <input type="submit" class="submitbtn" value="Save">
-            </form>
+        {% if role == 'Y' %}
+        <a class=" editbtn editcondition fa fa-pencil" href = "javascript:void(0)" onclick = "document.getElementById('conditionA').style.display='block';document.getElementById('fade').style.display='block'" style="font-size: 40px;"></a>
+        
+        <div id="conditionA" class="popupboxsmall">
+            
+            <div class="centre">
+                <form action="/replace_condition" method="post" class="loginform">
+                    <label class="form1stlabel">Old Value</label>
+                    {% for line in A %}
+                    <input type="text" name="old_condition" value="{{ line['condition'] }}" readonly class="form1stinput">
+                    {% endfor %}
+                    
+                    <label class="form2ndlabel">New Value</label>
+                    <input autofocus type="text" name="new_condition" required class="form2ndinput" placeholder="Enter the new value">
+                    
+                    <input type="submit" class="submitbtn" value="Save">
+                </form>
+            </div>
+            
+            <a class="close-button-for-lightbox" href = "javascript:void(0)" onclick = "document.getElementById('conditionA').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+            
         </div>
         
-        <a class="close" href = "javascript:void(0)" onclick = "document.getElementById('conditionA').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+        <div id="fade" class="black_overlay"></div>
+        {% endif %}
         
-    </div>
-    
-    <div id="fade" class="black_overlay"></div>
-    {% endif %}
-
-    <p class="actiontext"> {{ line['action'] }} </p>
-    {% endfor %}
-    
-    
-    <div class="uploadsbox">
         <p class="actionheader">Action</p>
+
+        {% for line in A %}
+        <p class="actiontext"> {{ line['action'] | safe }} </p>
+        {% endfor %}
         
         {% if role == 'Y' %}
         <a class=" editbtn editaction fa fa-pencil" href = "javascript:void(0)" onclick = "document.getElementById('actionA').style.display='block';document.getElementById('fade').style.display='block'" style="font-size: 20px;"></a>
@@ -71,21 +78,21 @@
         <div id="actionA" class="popupbox">
             
             <div class="centrebigger">
-                <form action="/replace_value" method="post" class="loginform">
+                <form action="/replace_action" method="post" class="loginform">
                     <label class="form1stlabel">Old Value</label>
                     {% for line in A %}
-                    <input type="hidden" name="old_value_to_replace" value="{{ line['action'] }}" readonly>
-                    <p class="actionold">{{ line['action'] }}</p>
+                    <input type="hidden" name="old_action" value="{{ line['action']}}" readonly>
+                    <p class="actionold">{{ line['action'] | safe }}</p>
                     {% endfor %}
                     
                     <label class="form2ndlabel">New Value</label>
-                    <input autofocus type="text" name="new_value_to_replace" required class="form2ndinput" placeholder="Enter the new value">
+                    <textarea id="summernote" name="new_action" class="form2ndinput" required></textarea>
                     
                     <input type="submit" class="submitbtn" value="Save">
                 </form>
             </div>
             
-            <a class="close" href = "javascript:void(0)" onclick = "document.getElementById('actionA').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+            <a class="close-button-for-lightbox" href = "javascript:void(0)" onclick = "document.getElementById('actionA').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
             
         </div>
 
@@ -136,7 +143,7 @@
                 
                 
             </div>
-            <a class="close" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+            <a class="close-button-for-lightbox" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
         </div>
         <div id="fade" class="black_overlay"></div>
         {% endif %}
@@ -156,7 +163,7 @@
                     <td><a href="{{ line['link'] }}" target="_blank">View link</a></td>
                     {% if role == 'Y' %}
                     <td>
-                        <form action="/remove_resource/{{ line['name'] }}" method="POST">
+                        <form action="/remove_resource/{{ line['id'] }}" method="POST">
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="submit" class="removebtn">Remove</button>
                         </form>
@@ -176,13 +183,13 @@
                         <div id="picture" class="popupboxbig">
                             <img class="image" src="{{ url_for('uploaded_file', filename=line['image']) }}" alt="">
                             <iframe src="{{ url_for('uploaded_file', filename=line['image']) }}" frameborder="0" width="90%" height="90%" allowfullscreen></iframe>
-                            <a class="close" href = "javascript:void(0)" onclick = "document.getElementById('picture').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+                            <a class="close-button-for-lightbox" href = "javascript:void(0)" onclick = "document.getElementById('picture').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
                         </div>
 
                         <div id="fade" class="black_overlay"></div>
                         {% if role == 'Y' %}
                         <td>
-                            <form action="/remove_resource/{{ line['name'] }}" method="POST">
+                            <form action="/remove_resource/{{ line['id'] }}" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button type="submit" class="removebtn">Remove</button>
                             </form>
@@ -207,11 +214,11 @@
                 <label for="condition" class="form1stlabel">Existing Action</label>
                 {% for line in A %}
                 <input type="hidden" name="oldaction" value="{{ line['action'] }}" readonly>
-                <p class="actionold">{{ line['action'] }}</p>
+                <p class="actionold">{{ line['action'] | safe }}</p>
                 {% endfor %}
                 
                 <label for="action" class="form2ndlabel">New Action</label>
-                <input type="text" name="suggested_action" placeholder="New Action" autofocus class="form2ndinput">
+                <textarea id="summernote" name="suggested_action" class="form2ndinput" required></textarea>
                 
                 <button type="submit" class="submitbtn">Submit</button>
                 
@@ -219,7 +226,7 @@
             
         </div>
         
-        <a class="close" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+        <a class="close-button-for-lightbox" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
     </div>
     <div id="fade" class="black_overlay"></div>
     {% endif %}
@@ -256,7 +263,12 @@
             // Show the selected form
             document.getElementById(formId).style.display = 'block';
         }
-            </script>
+
+        $('#summernote').summernote({
+        height: 200
+            });
+            
+        </script>
 
 </body>
 </html>

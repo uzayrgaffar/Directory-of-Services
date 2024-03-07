@@ -1,6 +1,0 @@
-site,username,password,role
-example,admin@example.com,password,Y
-example,user@example.com,password,N
-new,new@example.com,password,Y
-
-example,test@example.com,password,Y

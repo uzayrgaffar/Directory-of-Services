@@ -14,9 +14,9 @@
 
     <a href="/" class="logout">Logout</a>
 
-    <div class="dropdown">
-        <button class="dropbtn">Settings</button>
-        <div class="dropdown-content">
+    <div class="dropdown-for-settings-button">
+        <button class="dropbtn-for-settings-button">Settings</button>
+        <div class="dropdown-content-for-settings-button">
           <a href="profile.html">Profile</a>
           <a href="suggestions.html">Suggestions</a>
           <a href="users.html">Manage Users</a>
@@ -42,10 +42,10 @@
         <tbody>
             {% for line in userslist %}
             <tr>
-                <td>{{ line['username'] }}</td>
-                <td>{{ line['role'] }}</td>
+                <td>{{ line['email'] }}</td>
+                <td>{{ line['is_admin'] }}</td>
                 <td>
-                    <form action="/remove_user/{{ line['username'] }}" method="POST">
+                    <form action="/remove_user/{{ line['id'] }}" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="removebtn">Remove</button>
                     </form>
