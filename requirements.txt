@@ -1,2 +1,6 @@
 Flask
 Gunicorn
+sqlalchemy
+os
+sqlalchemy.ext.declarative
+sqlalchemy.orm
