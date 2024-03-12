@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, send_from_directory, app, session
-from sqlalchemy import create_engine, Column, String, Integer
+from sqlalchemy import create_engine, Column, String, Integer, Text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
@@ -12,6 +12,7 @@ class User(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     site = Column(String, nullable=False)
+    name = Column(Text, nullable=False)
     email = Column(String, nullable=False)
     password = Column(String, nullable=False)
     is_admin = Column(String)
@@ -61,7 +62,8 @@ def load_users():
             'username': user.email,
             'password': user.password,
             'role': user.is_admin,
-            'site': user.site
+            'site': user.site,
+            'name': user.name
         }
 
     session.close()
@@ -82,9 +84,53 @@ def verify():
     if username in users and users[username]['password'] == password:
             site = users[username]['site']
             session['site'] = site
-            return redirect("/AtoZ.html")
+            name = users[username]['name']
+            session['name'] = name
+            if users[username]['password'] == 'password':
+                return redirect("/password")
+            else:
+                return redirect("/AtoZ.html")
     else:
         return render_template("verify.html")
+    
+@app.route("/password")
+def newpassword():
+    return render_template("password.html")
+
+@app.route("/checkpassword")
+def checkpassword():
+    return render_template("checkpassword.html")
+
+@app.route('/check.html', methods=['POST'])
+def check():
+    oldpassword = session.get('password')
+    if request.method == 'POST':
+        password = request.form.get('password')
+        check = request.form.get('check')
+
+        if password == oldpassword:
+            return redirect("/checkpassword")
+
+        Session = sessionmaker(bind=engine)
+        db_session = Session()
+
+        try:
+            user = db_session.query(User).filter(User.password == oldpassword).first()
+
+            if password == check:
+                user.password = password
+                db_session.commit()
+            else:
+                return redirect("/checkpassword")
+        except Exception as e:
+            print("Error:", str(e))
+            db_session.rollback()
+        finally:
+            db_session.close()
+
+    return redirect('AtoZ.html')
+
+
 
 @app.route("/AtoZ.html")
 def AtoZ():
@@ -111,8 +157,9 @@ def profile():
     site = session.get('site')
     users = load_users()
     role = users[username]['role']
+    name = session.get('name')
 
-    return render_template("profile.html", username=username, password=password, site=site, role=role)
+    return render_template("profile.html", name=name, username=username, password=password, site=site, role=role)
 
 @app.route("/suggest.html", methods=["POST"])
 def usersuggestion():
@@ -147,14 +194,15 @@ def newuser():
     email = request.form['username']
     password = request.form['password']
     admin = request.form.get('admin')
+    name = request.form.get('name')
 
     Session = sessionmaker(bind=engine)
     db_session = Session()
     
     if admin == 'Y':
-        new_user = User(site=site, email=email, password=password, is_admin=admin)
+        new_user = User(site=site, email=email, password=password, is_admin=admin, name=name)
     else:
-        new_user = User(site=site, email=email, password=password, is_admin='N')
+        new_user = User(site=site, email=email, password=password, is_admin='N', name=name)
     db_session.add(new_user)
     db_session.commit()
     db_session.close()
@@ -207,6 +255,35 @@ def replace_action():
 
     return redirect('AtoZ.html')
 
+@app.route('/replace_action_from_suggestions/<int:suggest_id>', methods=['POST'])
+def replace_action_from_suggestions(suggest_id):
+    if request.method == 'POST':
+        old_action = request.form.get('old_action')
+        new_action = request.form.get('new_action')
+
+        Session = sessionmaker(bind=engine)
+        session = Session()
+
+        try:
+            condition = session.query(Condition).filter(Condition.action == old_action).first()
+
+            if condition:
+                condition.action = new_action
+                session.commit()
+        except Exception as e:
+            print("Error:", str(e))
+            session.rollback()
+        finally:
+            session.close()
+    
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    suggest = session.query(Suggest).filter_by(id=suggest_id).first()
+    if suggest:
+        session.delete(suggest)
+        session.commit()
+        session.close()
+    return redirect("/suggestions.html")
 
 @app.route("/addresources.html", methods=["POST"])
 def addresources():
