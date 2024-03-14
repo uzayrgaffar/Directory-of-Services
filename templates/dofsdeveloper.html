@@ -14,33 +14,19 @@
 </head>
 <body>
 
-  <a class="btn-back" href="AtoZ.html">
-    <img class="Home" src="{{ url_for('static', filename='images/home.webp') }}" alt="Home Button">
-  </a>
-
     <div class="header">
         <h1>Directory of Services</h1>
     </div>
 
-    <a href="/" class="dofs-logout">Logout</a>
-
-    <div class="dropdown-for-settings-button">
-        <button class="dropbtn-for-settings-button">Settings</button>
-        <div class="dropdown-content-for-settings-button">
-          <a href="profile.html">Profile</a>
-          <a href="suggestions.html">Suggestions</a>
-          <a href="users.html">Manage Users</a>
-        </div>
-      </div>
+    <a href="/" class="dofs-logout">Logout</a>      
       
-      
-      <ul class="navbarpos">
-        <li><a href="users.html" class="dofs-hover">View Users</a></li>
-        <li><a class="dofs-active dofs-hover" href="addusers.html">Add Users</a></li>
+      <ul class="navbarposdev">
+        <li><a class="dofs-active dofs-hover" href="dofsdeveloper.html">Add Users</a></li>
+        <li><a href="devusers.html" class="dofs-hover">View Users</a></li>
       </ul>
       
       <div class="centrebig">
-        <form action="/newuser.html" method="post" class="loginform">
+        <form action="/newuserdeveloper.html" method="post" class="loginform">
           <label for="name" class="form1stlabel">Name</label>
           <input autocomplete="off" autofocus name="name" placeholder="Enter Name" type="text" class="form1stinput" required>
 
@@ -48,14 +34,17 @@
           <input autocomplete="off" autofocus name="username" placeholder="Enter Email Address" type="text" class="form1stinput" required>
           
           <input name="password" type="hidden" value="password">
+
+          <label for="site" class="form2ndlabel">Site</label>
+          <input autocomplete="off" autofocus name="site" placeholder="Enter Site" type="text" class="form2ndinput" required> 
           
-          <label for="role" class="form2ndlabel">Is this user an admin?</label>
+          <label for="role" class="form3rdlabel">Is this user an admin?</label>
           <label for="yes" class="yes"><i>Yes</i></label>
           <input name="admin" type="checkbox" value="Y" class="checkyes">
           
-              <button type="submit" class="submitbtn" style="margin-left: 5%; margin-right: 5%;">Add User</button>
-            </form>
-        </div>
+          <button type="submit" class="submitbtn" style="margin-left: 5%; margin-right: 5%;">Add User</button>
+        </form>
+    </div>
        
 </body>
 </html>

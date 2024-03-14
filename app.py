@@ -86,6 +86,8 @@ def verify():
             session['site'] = site
             name = users[username]['name']
             session['name'] = name
+            if users[username]['username'] == 'uzayrgaffar@gmail.com':
+                return redirect('/dofsdeveloper.html')
             if users[username]['password'] == 'password':
                 return redirect("/password")
             else:
@@ -100,6 +102,18 @@ def newpassword():
 @app.route("/checkpassword")
 def checkpassword():
     return render_template("checkpassword.html")
+
+@app.route("/dofsdeveloper.html")
+def dofsdeveloper():
+    return render_template("dofsdeveloper.html")
+
+@app.route("/devusers.html")
+def devusers():
+    Session = sessionmaker(bind=engine)
+    db_session = Session()
+    user_list = db_session.query(User).all()
+    db_session.close()
+    return render_template("devusers.html", userslist=user_list)
 
 @app.route('/check.html', methods=['POST'])
 def check():
@@ -208,6 +222,27 @@ def newuser():
     db_session.close()
 
     return redirect("addusers.html")
+
+@app.route("/newuserdeveloper.html", methods=["POST"])
+def newuserdeveloper():
+    site = request.form.get('site')
+    email = request.form['username']
+    password = request.form['password']
+    admin = request.form.get('admin')
+    name = request.form.get('name')
+
+    Session = sessionmaker(bind=engine)
+    db_session = Session()
+    
+    if admin == 'Y':
+        new_user = User(site=site, email=email, password=password, is_admin=admin, name=name)
+    else:
+        new_user = User(site=site, email=email, password=password, is_admin='N', name=name)
+    db_session.add(new_user)
+    db_session.commit()
+    db_session.close()
+
+    return redirect("dofsdeveloper.html")
 
 @app.route('/replace_condition', methods=['POST'])
 def replace_condition():
@@ -742,6 +777,19 @@ def deregister_user(user_id):
             session.commit()
             session.close()
         return redirect("/users.html")
+    
+@app.route("/devremove_user/<int:user_id>", methods=["POST", "DELETE"])
+def devderegister_user(user_id):
+    if request.method in ["POST", "DELETE"]:
+        Session = sessionmaker(bind=engine)
+        session = Session()
+        user = session.query(User).filter_by(id=user_id).first()
+
+        if user:
+            session.delete(user)
+            session.commit()
+            session.close()
+        return redirect("/devusers.html")
     
 @app.route("/remove_suggest/<int:suggest_id>", methods=["POST", "DELETE"])
 def deregister_suggest(suggest_id):

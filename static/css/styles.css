@@ -78,6 +78,10 @@ a.btn-back:hover {
     margin-top: -20.5px;
 }
 
+.navbarposdev {
+    margin-top: -0.5px;
+}
+
 .dofs-hover:hover {
     color: #fff;
     text-decoration: none;
