@@ -829,6 +829,6 @@ def deregister_A(condition_id):
         return redirect("/AtoZ.html")
         
 if __name__ == "__main__":
-    app.run(debug=False,host='0.0.0.0')
+    app.run()
         
         
