@@ -47,6 +47,7 @@ Base.metadata.create_all(engine)
 
 RESOURCE = 'resource'
 app.config['resource'] =  RESOURCE
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dofs.db'
 app.secret_key = '24201962318371781011'
 
 
