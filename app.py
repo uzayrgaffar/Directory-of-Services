@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request, redirect, send_from_directory, app, session
-from sqlalchemy import create_engine, Column, String, Integer, Text
+from sqlalchemy import create_engine, Column, String, Integer, Text, engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 
 app = Flask(__name__)
 
+engine = create_engine('sqlite:///dofs.db')
 Base = declarative_base()
+Base.metadata.bind = engine
 
 class User(Base):
     __tablename__ = 'users'
@@ -40,8 +42,6 @@ class Suggest(Base):
     addoredit = Column(String, nullable=False)
     old = Column(String, nullable=False)
     new = Column(String)
-
-engine = create_engine('sqlite:///dofs.db')
 
 Base.metadata.create_all(engine)
 
