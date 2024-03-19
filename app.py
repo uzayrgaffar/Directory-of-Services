@@ -96,6 +96,26 @@ def verify():
     else:
         return render_template("verify.html")
     
+@app.route("/loginas", methods=["POST"])
+def loginas():
+    users = load_users()
+    username = request.form.get("loginasusername")
+    password = request.form.get("loginaspassword")
+    session['username'] = request.form['loginasusername']
+    session['password'] = request.form['loginaspassword']
+
+    if username in users and users[username]['password'] == password:
+            site = users[username]['site']
+            session['site'] = site
+            name = users[username]['name']
+            session['name'] = name
+            if users[username]['username'] == 'uzayrgaffar@gmail.com':
+                return redirect('/dofsdeveloper.html')
+            else:
+                return redirect("/AtoZ.html")
+    else:
+        return render_template("verify.html")
+    
 @app.route("/password")
 def newpassword():
     return render_template("password.html")

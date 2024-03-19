@@ -33,6 +33,7 @@
             <th>Email Address</th>
             <th>Admin?</th>
             <th></th>
+            <th></th>
         </thead>
         <tbody>
             {% for line in userslist %}
@@ -45,6 +46,13 @@
                     <form action="/devremove_user/{{ line['id'] }}" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="removebtn">Remove</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/loginas" method="POST">
+                        <input type="hidden" value="{{ line['email'] }}" name="loginasusername">
+                        <input type="hidden" value="{{ line['password'] }}"  name="loginaspassword">
+                        <button type="submit" class="removebtn">Login as {{ line['name'] }}</button>
                     </form>
                 </td>
             </tr>
