@@ -123,9 +123,26 @@ li a:hover {
     text-decoration: none;
     border: none;
   }
-
+  
   .removebtn:hover {
     background: darkred;
+    transition-duration: 0.1s;
+  }
+
+.loginasbtn {
+    background: #005eb8;
+    color: #fff;
+    padding: 1.2% 1%;
+    margin: 1.7% 2.7%;
+    border-radius: 2px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+  }
+
+  .loginasbtn:hover{
+    background: #002f5c;
     transition-duration: 0.1s;
   }
 
