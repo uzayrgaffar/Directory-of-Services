@@ -39,9 +39,8 @@
     </div>
     {% endfor %}
 
-    <div class="uploadsbox">
-        
-        {% if role == 'Y' %}
+    
+    {% if role == 'Y' %}
         <a class=" editbtn editcondition fa fa-pencil" href = "javascript:void(0)" onclick = "document.getElementById('conditionA').style.display='block';document.getElementById('fade').style.display='block'" style="font-size: 40px;"></a>
         
         <div id="conditionA" class="popupboxsmall">
@@ -67,11 +66,10 @@
         <div id="fade" class="black_overlay"></div>
         {% endif %}
         
+        <div class="uploadsbox">
+
         <p class="actionheader">Action</p>
 
-        {% for line in A %}
-        <div class="actiontext"> {{ line['action'] | safe }} </div>
-        {% endfor %}
         
         {% if role == 'Y' %}
         <a class=" editbtn editaction fa fa-pencil" href = "javascript:void(0)" onclick = "document.getElementById('actionA').style.display='block';document.getElementById('fade').style.display='block'" style="font-size: 20px;"></a>
@@ -96,16 +94,20 @@
             <a class="close-button-for-lightbox" href = "javascript:void(0)" onclick = "document.getElementById('actionA').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
             
         </div>
-
+        
         <div id="fade" class="black_overlay"></div>
         {% endif %}
-
+        
+        {% for line in A %}
+        <div class="actiontext"> {{ line['action'] | safe }} </div>
+        {% endfor %}
+        
     </div>
     
-
+    
     <div class="resourcesbox">
         <p class="resourcesheader">Resources</p>
-
+        
         {% if role == 'Y' %}
         <a class=" editbtn addresources" href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">+</a>
         <div id="light" class="popupbox">

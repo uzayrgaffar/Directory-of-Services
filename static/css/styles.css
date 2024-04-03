@@ -585,9 +585,9 @@ a.dofs-btn-admin:hover {
 }
 
 .editaction {
-    position: absolute;
-    left: 59vw;
-    bottom: 70vh;
+    position:absolute;
+    top: 277px;
+    margin-left: 57vw
 }
 
 .addresources {
