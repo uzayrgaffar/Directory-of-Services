@@ -41,27 +41,11 @@
     
         <br>
 
-        {% if role == 'Y' %}
         <div class="centrebuttons">
             {% for line in S %}
-            <a class="dofs-btn-admin" href="{{ url_for('action', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}
-
-                <form action="/remove/{{ line['id'] }}" method="POST">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type=" submit" style="color: crimson; border: none; font-size: 24px; position: relative; top: -30px; left: 52%; background-color: #005eb8;"><i class="fa fa-trash-o removebtn-hover"></i></button>
-                </form>
-            </a>
+            <a class="dofs-btn" href="{{ url_for('action', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a>
             {% endfor %}
         </div>
-        {% endif %}
-
-            {% if role == 'N' %}
-            <div class="centrebuttons">
-                {% for line in S %}
-                <a class="dofs-btn" href="{{ url_for('action', condition=line['condition'], action=line['action']) }}">{{ line['condition'] }}</a>
-                {% endfor %}
-            </div>
-            {% endif %}
 
     <a class="btn-back" href="AtoZ.html">
         <img class="Home" src="{{ url_for('static', filename='images/home.webp') }}" alt="Home Button">

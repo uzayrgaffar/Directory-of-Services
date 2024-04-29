@@ -32,13 +32,21 @@
         </div>
       </div>
     
-    {% for line in A %}
-    <div class="copybtninline">
+      {% for line in A %}
+      <div class="copybtninline">
+        {% if role == 'N' %}
+        <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="suggesteditbtn">Suggest an Edit</a>
+        {% endif %}
+        {% if role == 'Y' %}
+        <form action="/remove/{{ line['id'] }}" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="removecondition">Remove Condition</button>
+        </form>    
+        {% endif %}
         <p class="actiontitle" id="copyText"> {{ line['condition'] }} </p>
         <button onclick="copyToClipboard()" class="copybtn">Copy</button>
     </div>
     {% endfor %}
-
     
     {% if role == 'Y' %}
         <a class=" editbtn editcondition fa fa-pencil" href = "javascript:void(0)" onclick = "document.getElementById('conditionA').style.display='block';document.getElementById('fade').style.display='block'" style="font-size: 40px;"></a>
@@ -81,7 +89,10 @@
                     <label class="form1stlabel">Old Value</label>
                     {% for line in A %}
                     <input type="hidden" name="old_action" value="{{ line['action']}}" readonly>
-                    <p class="actionold">{{ line['action'] | safe }}</p>
+                    <div class="actionold">
+                        {{ line['action'] | safe }}
+                        <button onclick="copyToClipboard2()" class="copyaction">Copy</button>
+                    </div>
                     {% endfor %}
                     
                     <label class="form2ndlabel">New Value</label>
@@ -99,7 +110,7 @@
         {% endif %}
         
         {% for line in A %}
-        <div class="actiontext"> {{ line['action'] | safe }} </div>
+        <div class="actiontext" id="copyText2"> {{ line['action'] | safe }} </div>
         {% endfor %}
         
     </div>
@@ -206,7 +217,7 @@
     </div>
 
     {% if role == 'N' %}
-    <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="suggesteditbtn">Suggest an Edit</a>
+    <!-- <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="suggesteditbtn">Suggest an Edit</a> -->
     <div id="light" class="popupbox">
         
         <div class="centrebig">
@@ -236,11 +247,30 @@
     
     <a class="btn-back" href="AtoZ.html">
         <img class="Home" src="{{ url_for('static', filename='images/home.webp') }}" alt="Home Button">
-        </a>
+    </a>
         
         <script>
             function copyToClipboard() {
                 var copyText = document.getElementById("copyText");
+    
+                var range = document.createRange();
+                range.selectNode(copyText);
+                
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                
+                try {
+                    document.execCommand("copy");
+                    alert("Text copied to clipboard: " + copyText.innerText);
+                } catch (error) {
+                    console.error("Unable to copy text to clipboard", error);
+                }
+                
+                window.getSelection().removeAllRanges();
+            }
+
+            function copyToClipboard2() {
+                var copyText = document.getElementById("copyText2");
     
                 var range = document.createRange();
                 range.selectNode(copyText);
