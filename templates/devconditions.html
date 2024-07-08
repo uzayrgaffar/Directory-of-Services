@@ -22,39 +22,29 @@
     
     <ul class="navbarposdev">
         <li><a href="dofsdeveloper.html" class="dofs-hover">Add Users</a></li>
-        <li><a class="dofs-active dofs-hover" href="devusers.html">View Users</a></li>
-        <li><a href="devconditions.html" class="dofs-hover">View Conditions</a></li>
+        <li><a class="dofs-hover" href="devusers.html">View Users</a></li>
+        <li><a href="devconditions.html" class="dofs-hover dofs-active">View Conditions</a></li>
         <li><a href="devresources.html" class="dofs-hover">View Resources</a></li>
     </ul>
     
-    <h1>Users</h1>
+    <h1>Conditions</h1>
     <table id="table">
         <thead>
             <th>Site</th>
-            <th>Name</th>
-            <th>Email Address</th>
-            <th>Admin?</th>
-            <th></th>
+            <th>Condition</th>
+            <th>Action</th>
             <th></th>
         </thead>
         <tbody>
             {% for line in userslist %}
             <tr>
                 <td>{{ line['site'] }}</td>
-                <td>{{ line['name'] }}</td>
-                <td>{{ line['email'] }}</td>
-                <td>{{ line['is_admin'] }}</td>
+                <td>{{ line['condition'] | safe }}</td>
+                <td>{{ line['action'] | safe }}</td>
                 <td>
-                    <form action="/devremove_user/{{ line['id'] }}" method="POST">
+                    <form action="/devremove/{{ line['id'] }}" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="removebtn">Remove</button>
-                    </form>
-                </td>
-                <td>
-                    <form action="/loginas" method="POST">
-                        <input type="hidden" value="{{ line['email'] }}">
-                        <input type="hidden" value="{{ line['password'] }}">
-                        <button type="submit" class="loginasbtn">Login as {{ line['name'] }}</button>
                     </form>
                 </td>
             </tr>

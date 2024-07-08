@@ -136,6 +136,22 @@ def devusers():
     db_session.close()
     return render_template("devusers.html", userslist=user_list)
 
+@app.route("/devconditions.html")
+def devconditions():
+    Session = sessionmaker(bind=engine)
+    db_session = Session()
+    condition_list = db_session.query(Condition).all()
+    db_session.close()
+    return render_template("devconditions.html", userslist=condition_list)
+
+@app.route("/devresources.html")
+def devresources():
+    Session = sessionmaker(bind=engine)
+    db_session = Session()
+    resource_list = db_session.query(Resource).all()
+    db_session.close()
+    return render_template("devresources.html", userslist=resource_list)
+
 @app.route('/check.html', methods=['POST'])
 def check():
     oldpassword = session.get('password')
@@ -823,6 +839,7 @@ def deregister_suggest(suggest_id):
         session.close()
         return redirect("/suggestions.html")
     
+
 @app.route("/remove_resource/<int:resource_id>", methods=["POST", "DELETE"])
 def deregister_resource(resource_id):
     if request.method in ["POST", "DELETE"]:
@@ -835,6 +852,19 @@ def deregister_resource(resource_id):
             session.commit()
             session.close()
         return redirect("/AtoZ.html")
+    
+@app.route("/devremove_resource/<int:resource_id>", methods=["POST", "DELETE"])
+def devderegister_resource(resource_id):
+    if request.method in ["POST", "DELETE"]:
+        Session = sessionmaker(bind=engine)
+        session = Session()
+        resource = session.query(Resource).filter_by(id=resource_id).first()
+
+        if resource:
+            session.delete(resource)
+            session.commit()
+            session.close()
+        return redirect("/devresources.html")
 
 @app.route("/remove/<int:condition_id>", methods=["POST", "DELETE"])
 def deregister_A(condition_id):
@@ -847,6 +877,18 @@ def deregister_A(condition_id):
             session.commit()
             session.close()
         return redirect("/AtoZ.html")
+    
+@app.route("/devremove/<int:condition_id>", methods=["POST", "DELETE"])
+def devderegister_A(condition_id):
+    if request.method in ["POST", "DELETE"]:
+        Session = sessionmaker(bind=engine)
+        session = Session()
+        condition = session.query(Condition).filter_by(id=condition_id).first()
+        if condition:
+            session.delete(condition)
+            session.commit()
+            session.close()
+        return redirect("/devconditions.html")
         
 if __name__ == "__main__":
     app.run()

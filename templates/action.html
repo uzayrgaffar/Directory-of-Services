@@ -149,7 +149,7 @@
                         {% for line in A %}
                         <input type="hidden" name="condition" value="{{ line['condition'] }}" readonly>
                         {% endfor %}
-                        <input type="file" name="file" class="upload">
+                        <input type="file" id="file" name="file" class="upload" accept=".csv,.xls,.xlsx,.ods,.jpg,.jpeg,.png,.gif,.bmp,.tiff,.pdf,.ppt,.pptx,.odp">
                     </div>    
                     
                     <button type="submit" class="submitbtn" style="margin-top: 10px">Add Resource</button>
